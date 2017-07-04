@@ -16,7 +16,5 @@
     The domain should be CMCC Unicom NUIST or ChinaNet. 
 
 ## Notice
-#### If the script need run on openwrt,here the problems
-* change `#!/bin/bash` to `#!/bin/sh`
-* use `$timestamp` instead of `$(date +%s%N | cut -b1-13)`
-* There is no `base64` on busybox
+#### If the script need run on LEDE/OpenWrt,here the problems
+* You need to install `coreutils-base64` on LEDE/OpenWrt.

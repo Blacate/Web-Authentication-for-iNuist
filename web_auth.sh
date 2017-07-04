@@ -6,13 +6,16 @@
 #Author:    Blacate <i#blacate.me>
 #Refer:     Web authentication for Dr.com <King's Way>
 
-#on openwrt, date command can not get ms
-#   time=$(date +%s%N | cut -b1-13)
-#   timestamp=${time/\%N/000}
-#   url_init="http://10.255.255.13/index.php/index/init?_=$timestamp"
+
+time=$(date +%s%N | cut -b1-13)
+if [ "${#time}" = "13" ];then
+    timestamp=${time}
+else
+    timestamp=${time}000
+fi
+url_init="http://10.255.255.13/index.php/index/init?_=$timestamp"
 url_login="http://10.255.255.13/index.php/index/login"
 url_logout="http://10.255.255.13/index.php/index/logout"
-url_init="http://10.255.255.13/index.php/index/init?_=$(date +%s%N | cut -b1-13)"
 
 fun_help()
 {
@@ -105,12 +108,13 @@ fun_login()
     encrypt=$(echo -n $password | base64)
     login_data=$(wget $url_login -q --post-data "username=$username&domain=$domain&password=$encrypt&enablemacauth=0" -O -)
     login_state=$(echo $login_data |tr -s "," "\012" | grep status | cut -b 10)
+    login_info=$(echo $login_data |tr -s "," "\012" | grep info | cut -d \: -f2)
     if [ "$login_state" = "1" ];then
             echo "Login Successful"
             echo "username:$username"
     else
             echo "Failed"
-            echo "Please try again"
+            echo "Info:$login_info"
     fi
 }
 
@@ -125,11 +129,12 @@ fun_logout()
 
     logout_data=$(wget --method post -q $url_logout -q -O -)
     logout_state=$(echo $logout_data |tr -s "," "\012" | grep status | cut -b 10)
+    logout_info=$(echo $logout_data |tr -s "," "\012" | grep info | cut -d \: -f2)
     if [ "$logout_state" = "1" ];then
             echo "Logout Successful"
     else
             echo "Failed"
-            echo "Please try again"
+            echo "Info: $logout_info"
     fi
 
 }
