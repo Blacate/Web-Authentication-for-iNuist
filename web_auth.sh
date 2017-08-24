@@ -114,7 +114,7 @@ fun_login()
             echo "username:$username"
     else
             echo "Failed"
-            echo "Info:$login_info"
+            echo -e "Info:$login_info"
     fi
 }
 
@@ -134,7 +134,7 @@ fun_logout()
             echo "Logout Successful"
     else
             echo "Failed"
-            echo "Info: $logout_info"
+            echo -e "Info: $logout_info"
     fi
 
 }
