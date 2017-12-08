@@ -18,3 +18,9 @@
 ## Notice
 #### If the script need run on LEDE/OpenWrt,here the problems
 * You need to install `coreutils-base64` on LEDE/OpenWrt.
+
+## Download
+#### For Linux
+```
+wget https://raw.githubusercontent.com/Blacate/Web-Authentication-for-iNuist/master/web_auth.sh
+```

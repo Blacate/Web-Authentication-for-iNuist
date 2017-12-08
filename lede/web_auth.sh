@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #About:     Web authentication for i-nuist, specially in NUIST.
 #Version:   1.0
