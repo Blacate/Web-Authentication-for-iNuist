@@ -22,5 +22,9 @@
 ## Download
 #### For Linux
 ```
-wget https://raw.githubusercontent.com/Blacate/Web-Authentication-for-iNuist/master/web_auth.sh
+wget https://raw.githubusercontent.com/Blacate/Web-Authentication-for-iNuist/master/linux/web_auth.sh
+```
+#### For LEDE
+```
+wget https://raw.githubusercontent.com/Blacate/Web-Authentication-for-iNuist/master/lede/web_auth.sh
 ```
